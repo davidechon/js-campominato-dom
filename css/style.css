@@ -1,0 +1,41 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  height: 80px;
+}
+header .logo img{
+  height: 60px;
+}
+
+
+main{
+  height: calc(100vh - 140px);
+  min-height: 500px;
+  background-color: aquamarine;
+  overflow-y: auto;
+}
+
+
+.gridRow{
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.box{
+  border: 1px solid white;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+footer{
+  height: 60px;
+}
