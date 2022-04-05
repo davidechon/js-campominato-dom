@@ -5,14 +5,45 @@
 // con difficoltà 1 => tra 1 e 100
 // con difficoltà 2 => tra 1 e 81
 // con difficoltà 3 => tra 1 e 49
-// Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
+
+// 1. Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+
+// 2. I numeri nella lista delle bombe non possono essere duplicati.
+
+// 3. In seguito l'utente clicca su una cella: 
+//        se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina, 
+//        altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+
+// 4. La partita termina quando il giocatore clicca su una bomba o raggiunge il numero massimo possibile di numeri consentiti.
+
+// 5. Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
+
+// BONUS:
+// 1- quando si clicca su una bomba e finisce la partita, evitare che si possa cliccare su altre celle
+// 2- quando si clicca su una bomba e finisce la partita, il software scopre tutte le bombe nascoste
 
 // Flowchart
-// 1. Creare una scelta di livello di difficoltà da 1 a 3 con relativo bottone
-// 2. Creare la griglia difficoltà 1 con numeri generati da 1 a 100
-// 3. Creare la griglia difficoltà 2 con numeri generati da 1 a 81
-// 4. Creare la griglia difficoltà 3 con numeri generati da 1 a 49
-// 5. Ogni cella è cliccabile e cambia colore
+// 1. Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+    // 1.A. Devo generare un numero random => funzione Math.Random
+    // 1.B. Devo mettere il numero random nel range di difficoltà prescelta => potrebbe essere un if?
+    // 1.C. Devo inserire la bomba al posto del numero random
+
+/////////////////////////////////////////////////////////////////////////
+// 1.A. 
+let numBombe = 16; // <= questo dovrebbe essere numSquare !!
+let totBombe = 0;
+
+// let bombe = Math.floor((Math.random() * numBombe) + 1); 
+// console.log(bombe);
+// 1.B.
+
+let numSquare = 41;
+for (let i = 1; i < numBombe && i < numBombe; i++){
+  totBombe = totBombe += i;
+  console.log("La bomba si trova nella casella " + totBombe);
+}
+// 1.C.
+
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -36,6 +67,9 @@ function setLevel(event) {
       numSquare = 49;
       break;
   }
+
+
+
   let squareXSide = Math.sqrt(numSquare);
   console.log("numero di celle per lato: ", squareXSide);
   generaGriglia(numSquare, squareXSide)
@@ -54,7 +88,7 @@ function generaGriglia(numSquare, squareXSide){
 }
 function generaCella(numSquare, squareXSide){
   let square = document.createElement('div');
-  square.setAttribute('class', "box");
+  square.setAttribute('class', "box d-flex justify-content-center align-items-center fw-bold fs-6");
   square.style.width = `calc(100% / ${squareXSide})`;
   square.style.heigth = `calc(100% / ${squareXSide})`;
   square.classList.add('pointer');
